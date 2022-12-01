@@ -81,7 +81,7 @@ class OnBoardingMain extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 34,
+                          height: 25,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -103,28 +103,67 @@ class OnBoardingMain extends StatelessWidget {
                                     );
                                   })),
                         ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 30),
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.to(LoginPage());
-                            },
-                            child: Container(
-                              width: width,
-                              height: 44,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.white),
-                              child: Center(
-                                  child: Text(
-                                "Get Started",
-                                style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.w700),
-                              )),
-                            ),
-                          ),
-                        )
+                        //   Padding(
+                        //       padding: EdgeInsets.symmetric(
+                        //           horizontal: 12, vertical: 30),
+                        //       child: Obx(() {
+                        //         return GestureDetector(
+                        //             onTap: () {
+                        //               _controller.forwardAction;
+                        //             },
+                        //             child: Container(
+                        //                 width: width,
+                        //                 height: 44,
+                        //                 decoration: BoxDecoration(
+                        //                     borderRadius:
+                        //                         BorderRadius.circular(20),
+                        //                     color: Colors.white),
+                        //                 child: Center(
+                        //                     child: Text(
+                        //                   "Get Started",
+                        //                   style: TextStyle(
+                        //                       fontSize: 15,
+                        //                       fontWeight: FontWeight.w700),
+                        //                 ))));
+                        //       }))
+
+                        GestureDetector(
+                            onTap: _controller.forwardAction,
+                            child: Obx(() {
+                              return Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 5),
+                                child: _controller.isLastPage
+                                    ? Container(
+                                        width: width,
+                                        height: 44,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color: Colors.white),
+                                        child: Center(
+                                            child: Text(
+                                          "Get Started",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w700),
+                                        )))
+                                    : Container(
+                                        width: width,
+                                        height: 44,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color: Colors.white),
+                                        child: Center(
+                                            child: Text(
+                                          "Get Started",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w700),
+                                        ))),
+                              );
+                            }))
                       ],
                     ),
                   ),

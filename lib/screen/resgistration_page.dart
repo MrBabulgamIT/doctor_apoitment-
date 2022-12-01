@@ -13,10 +13,12 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  bool cheekboxValue = false;
   @override
   Widget build(BuildContext context) {
     final width = Get.width;
     final height = Get.height;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -184,8 +186,24 @@ class _RegistrationPageState extends State<RegistrationPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Image(
-                    image: AssetImage("images/tic_2.png"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Checkbox(
+                          value: cheekboxValue,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              cheekboxValue = value!;
+                            });
+                          }),
+                      Text(
+                        "Remember me",
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400),
+                      )
+                    ],
                   ),
                 ],
               ),

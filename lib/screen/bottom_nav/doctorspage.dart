@@ -1,4 +1,5 @@
 import 'package:doctor_appoinment/controller/modelcontroller.dart';
+import 'package:doctor_appoinment/screen/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -6,18 +7,22 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DoctorPage extends StatefulWidget {
-  const DoctorPage({Key? key}) : super(key: key);
+  DoctorPage({Key? key}) : super(key: key);
 
   @override
   State<DoctorPage> createState() => _DoctorPageState();
 }
 
 class _DoctorPageState extends State<DoctorPage> {
+  // Color _containerColor = _isSelected ? Colors.purple : Colors.white;
+  bool _isSelected = false;
   @override
   Widget build(BuildContext context) {
     final width = Get.width;
     final height = Get.height;
+
     final doctordata = ModelController();
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -72,267 +77,63 @@ class _DoctorPageState extends State<DoctorPage> {
                 ),
               ),
               Expanded(
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 20,
-                  children: [
-                    Container(
-                      height: 130,
-                      decoration: BoxDecoration(
-                        color: Colors.purple,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image(
-                              image: AssetImage(doctordata
-                                  .modelControolerData[0].image
-                                  .toString()),
-                              fit: BoxFit.cover,
-                              width: 173,
+                  child: GridView.builder(
+                      shrinkWrap: true,
+                      itemCount: doctordata.modelControolerData.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 4.0,
+                              mainAxisSpacing: 4.0),
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _isSelected = _isSelected ? false : true;
+                            });
+                          },
+                          child: Container(
+                            height: 130,
+                            decoration: BoxDecoration(
+                              color: _isSelected ? Colors.purple : Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image(
+                                    image: AssetImage(doctordata
+                                        .modelControolerData[index].image
+                                        .toString()),
+                                    fit: BoxFit.cover,
+                                    width: 173,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                    doctordata
+                                        .modelControolerData[index].titleName
+                                        .toString(),
+                                    style: GoogleFonts.nunito(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w700)),
+                                Text(
+                                    doctordata
+                                        .modelControolerData[index].subTitle
+                                        .toString(),
+                                    style: GoogleFonts.nunito(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w500)),
+                              ],
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                              doctordata.modelControolerData[0].titleName
-                                  .toString(),
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700)),
-                          Text(
-                              doctordata.modelControolerData[0].subTitle
-                                  .toString(),
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500)),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 130,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.white,
-                              blurRadius: 1,
-                              offset: Offset(0, 10))
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image(
-                              image: AssetImage(doctordata
-                                  .modelControolerData[1].image
-                                  .toString()),
-                              fit: BoxFit.cover,
-                              width: 173,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                              doctordata.modelControolerData[1].titleName
-                                  .toString(),
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700)),
-                          Text(
-                              doctordata.modelControolerData[1].subTitle
-                                  .toString(),
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500)),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 130,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.white,
-                              blurRadius: 1,
-                              offset: Offset(0, 10))
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image(
-                              image: AssetImage(doctordata
-                                  .modelControolerData[2].image
-                                  .toString()),
-                              fit: BoxFit.cover,
-                              width: 173,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                              doctordata.modelControolerData[2].titleName
-                                  .toString(),
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700)),
-                          Text(
-                              doctordata.modelControolerData[2].subTitle
-                                  .toString(),
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500)),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 130,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.white,
-                              blurRadius: 1,
-                              offset: Offset(0, 10))
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image(
-                              image: AssetImage(doctordata
-                                  .modelControolerData[3].image
-                                  .toString()),
-                              fit: BoxFit.cover,
-                              width: 173,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                              doctordata.modelControolerData[3].titleName
-                                  .toString(),
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700)),
-                          Text(
-                              doctordata.modelControolerData[3].subTitle
-                                  .toString(),
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500)),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 130,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.white,
-                              blurRadius: 1,
-                              offset: Offset(0, 10))
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image(
-                              image: AssetImage(doctordata
-                                  .modelControolerData[4].image
-                                  .toString()),
-                              fit: BoxFit.cover,
-                              width: 173,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                              doctordata.modelControolerData[4].titleName
-                                  .toString(),
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700)),
-                          Text(
-                              doctordata.modelControolerData[4].subTitle
-                                  .toString(),
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500)),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 130,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.white,
-                              blurRadius: 1,
-                              offset: Offset(0, 10))
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image(
-                              image: AssetImage(doctordata
-                                  .modelControolerData[5].image
-                                  .toString()),
-                              fit: BoxFit.cover,
-                              width: 173,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                              doctordata.modelControolerData[5].titleName
-                                  .toString(),
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700)),
-                          Text(
-                              doctordata.modelControolerData[5].subTitle
-                                  .toString(),
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500)),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
+                        );
+                      })),
             ],
           ),
         ),

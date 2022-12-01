@@ -1,3 +1,4 @@
+import 'package:doctor_appoinment/controller/topdoctorcontroller.dart';
 import 'package:doctor_appoinment/screen/bottom_nav/doctor_information.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -13,6 +14,7 @@ class Top_DoctorPage extends StatefulWidget {
 }
 
 class _Top_DoctorPageState extends State<Top_DoctorPage> {
+  final topdoctordata = TopDoctorController();
   @override
   Widget build(BuildContext context) {
     final width = Get.width;
@@ -178,475 +180,208 @@ class _Top_DoctorPageState extends State<Top_DoctorPage> {
                 ],
               ),
               SizedBox(
+                height: 5,
+              ),
+              Expanded(
+                  child: ListView.builder(
+                      itemCount: topdoctordata.topdoctormodeldata.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            Get.to(DoctorInformation());
+                          },
+                          child: Column(
+                            children: [
+                              Container(
+                                width: width,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.white.withOpacity(0.9),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                        blurRadius: 10,
+                                        offset: Offset(-0, -0))
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    children: [
+                                      Row(children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          child: Image(
+                                              image: AssetImage(
+                                                  "images/pdoc.png")),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                              height: 2,
+                                            ),
+                                            Text(
+                                              topdoctordata
+                                                  .topdoctormodeldata[index]
+                                                  .name
+                                                  .toString(),
+                                              style: GoogleFonts.nunito(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w700,
+                                                  color: Colors.black),
+                                            ),
+                                            SizedBox(
+                                              height: 3,
+                                            ),
+                                            Text(
+                                              topdoctordata
+                                                  .topdoctormodeldata[index]
+                                                  .designation
+                                                  .toString(),
+                                              style: GoogleFonts.nunito(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 3,
+                                            ),
+                                            Text(
+                                              topdoctordata
+                                                  .topdoctormodeldata[index]
+                                                  .location
+                                                  .toString(),
+                                              style: GoogleFonts.nunito(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 5,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.alarm,
+                                                  color: Colors.black,
+                                                  size: 15,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text(
+                                                  topdoctordata
+                                                      .topdoctormodeldata[index]
+                                                      .time
+                                                      .toString(),
+                                                  style: GoogleFonts.nunito(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        )
+                                      ]),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                        decoration:
+                                            BoxDecoration(color: Colors.white),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(3.0),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: Color.fromARGB(
+                                                      255, 240, 38, 23),
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(3.0),
+                                                  child: Row(
+                                                    children: [
+                                                      Text(
+                                                        " 4.5 ★",
+                                                        style:
+                                                            GoogleFonts.nunito(
+                                                          fontSize: 12,
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(3.0),
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    color: Colors.purple,
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                          blurRadius: 0,
+                                                          color: Colors.white
+                                                              .withOpacity(0.9),
+                                                          offset:
+                                                              Offset(-0, -0))
+                                                    ]),
+                                                child: Center(
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      "Book Appointment",
+                                                      style: GoogleFonts.nunito(
+                                                          fontSize: 10,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: Colors.white),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                            ],
+                          ),
+                        );
+                      })),
+              SizedBox(
                 height: 10,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.to(DoctorInformation());
-                },
-                child: Container(
-                  width: width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white.withOpacity(0.9),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          blurRadius: 10,
-                          offset: Offset(-0, -0))
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        Row(children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: Image(image: AssetImage("images/pdoc.png")),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 2,
-                              ),
-                              Text(
-                                "Dr. Ishtiuq Ahmed Chowdhury",
-                                style: GoogleFonts.nunito(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black),
-                              ),
-                              SizedBox(
-                                height: 3,
-                              ),
-                              Text(
-                                "General Practitioner",
-                                style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 3,
-                              ),
-                              Text(
-                                "Somerian Clinic - Dubai",
-                                style: GoogleFonts.nunito(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.alarm,
-                                    color: Colors.black,
-                                    size: 15,
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    "10:00  AM-  8.45 PM",
-                                    style: GoogleFonts.nunito(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
-                        ]),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(color: Colors.white),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 240, 38, 23),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(3.0),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          " 4.5 ★",
-                                          style: GoogleFonts.nunito(
-                                            fontSize: 12,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.purple,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            blurRadius: 0,
-                                            color:
-                                                Colors.white.withOpacity(0.9),
-                                            offset: Offset(-0, -0))
-                                      ]),
-                                  child: Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "Book Appointment",
-                                        style: GoogleFonts.nunito(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.to(DoctorInformation());
-                },
-                child: Container(
-                  width: width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white.withOpacity(0.9),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          blurRadius: 10,
-                          offset: Offset(-0, -0))
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        Row(children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: Image(image: AssetImage("images/pdoc.png")),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 2,
-                              ),
-                              Text(
-                                "Dr. Ishtiuq Ahmed Chowdhury",
-                                style: GoogleFonts.nunito(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black),
-                              ),
-                              SizedBox(
-                                height: 3,
-                              ),
-                              Text(
-                                "General Practitioner",
-                                style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 3,
-                              ),
-                              Text(
-                                "Somerian Clinic - Dubai",
-                                style: GoogleFonts.nunito(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.alarm,
-                                    color: Colors.black,
-                                    size: 15,
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    "10:00  AM-  8.45 PM",
-                                    style: GoogleFonts.nunito(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
-                        ]),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(color: Colors.white),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 240, 38, 23),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(3.0),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          " 4.5 ★",
-                                          style: GoogleFonts.nunito(
-                                            fontSize: 12,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.purple,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            blurRadius: 0,
-                                            color:
-                                                Colors.white.withOpacity(0.9),
-                                            offset: Offset(-0, -0))
-                                      ]),
-                                  child: Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "Book Appointment",
-                                        style: GoogleFonts.nunito(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.to(DoctorInformation());
-                },
-                child: Container(
-                  width: width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white.withOpacity(0.9),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          blurRadius: 10,
-                          offset: Offset(-0, -0))
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        Row(children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: Image(image: AssetImage("images/pdoc.png")),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 2,
-                              ),
-                              Text(
-                                "Dr. Ishtiuq Ahmed Chowdhury",
-                                style: GoogleFonts.nunito(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black),
-                              ),
-                              SizedBox(
-                                height: 3,
-                              ),
-                              Text(
-                                "General Practitioner",
-                                style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 3,
-                              ),
-                              Text(
-                                "Somerian Clinic - Dubai",
-                                style: GoogleFonts.nunito(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.alarm,
-                                    color: Colors.black,
-                                    size: 15,
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    "10:00  AM-  8.45 PM",
-                                    style: GoogleFonts.nunito(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
-                        ]),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(color: Colors.white),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 240, 38, 23),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(3.0),
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          " 4.5 ★",
-                                          style: GoogleFonts.nunito(
-                                            fontSize: 12,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.purple,
-                                      boxShadow: [
-                                        BoxShadow(
-                                            blurRadius: 0,
-                                            color:
-                                                Colors.white.withOpacity(0.9),
-                                            offset: Offset(-0, -0))
-                                      ]),
-                                  child: Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "Book Appointment",
-                                        style: GoogleFonts.nunito(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
               ),
             ],
           ),

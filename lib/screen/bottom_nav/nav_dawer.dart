@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Nav_Drawer extends StatelessWidget {
-  const Nav_Drawer({
+  Nav_Drawer({
     Key? key,
   }) : super(key: key);
-
+  bool _isselected = false;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -33,7 +33,6 @@ class Nav_Drawer extends StatelessWidget {
               height: 10,
             ),
             ListTile(
-              tileColor: Colors.purple.withOpacity(0.1),
               leading: Padding(
                 padding: EdgeInsets.all(8),
                 child: Image(
@@ -53,6 +52,7 @@ class Nav_Drawer extends StatelessWidget {
               onTap: () {},
             ),
             ListTile(
+              selectedTileColor: Colors.purple,
               leading: Padding(
                 padding: EdgeInsets.all(8),
                 child: Image(

@@ -1,3 +1,4 @@
+import 'package:doctor_appoinment/controller/servicecontroller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -12,6 +13,7 @@ class ServicePage extends StatefulWidget {
 }
 
 class _ServicePageState extends State<ServicePage> {
+  final serviceData = ServiceController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,378 +70,52 @@ class _ServicePageState extends State<ServicePage> {
               ),
             ),
             Expanded(
-              child: GridView.count(
-                crossAxisCount: 3,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                children: [
-                  Container(
-                    width: 110,
-                    height: 103,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.purple),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Image(
-                          image: AssetImage("images/doct.png"),
-                          color: Colors.white,
-                          height: 30,
-                          width: 27,
-                          fit: BoxFit.cover,
+                child: GridView.builder(
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 6.0,
+                            mainAxisSpacing: 8.0),
+                    itemCount: serviceData.ServiceModelData.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: 110,
+                        height: 103,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                  blurRadius: 0,
+                                  color: Colors.white.withOpacity(0.9),
+                                  offset: Offset(-0, -0))
+                            ]),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image(
+                              image: AssetImage(serviceData
+                                  .ServiceModelData[index].icon
+                                  .toString()),
+                              color: Colors.purple,
+                              height: 30,
+                              width: 27,
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                                serviceData.ServiceModelData[index].name
+                                    .toString(),
+                                style: TextStyle(
+                                    color: Colors.purple,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700)),
+                          ],
                         ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("Doctor",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 110,
-                    height: 103,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 0,
-                              color: Colors.white.withOpacity(0.9),
-                              offset: Offset(-0, -0))
-                        ]),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Image(
-                          image: AssetImage("images/hosp.png"),
-                          color: Colors.purple,
-                          height: 30,
-                          width: 27,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("Hospital",
-                            style: TextStyle(
-                                color: Colors.purple,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 110,
-                    height: 103,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 0,
-                              color: Colors.white.withOpacity(0.9),
-                              offset: Offset(-0, -0))
-                        ]),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Image(
-                          image: AssetImage("images/med.png"),
-                          color: Colors.purple,
-                          height: 30,
-                          width: 27,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("Medicine",
-                            style: TextStyle(
-                                color: Colors.purple,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 110,
-                    height: 103,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Image(
-                          image: AssetImage("images/doct.png"),
-                          color: Colors.purple,
-                          height: 30,
-                          width: 27,
-                          fit: BoxFit.cover,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("Doctor",
-                            style: TextStyle(
-                                color: Colors.purple,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 110,
-                    height: 103,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 0,
-                              color: Colors.white.withOpacity(0.9),
-                              offset: Offset(-0, -0))
-                        ]),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Image(
-                          image: AssetImage("images/hosp.png"),
-                          color: Colors.purple,
-                          height: 30,
-                          width: 27,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("Hospital",
-                            style: TextStyle(
-                                color: Colors.purple,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 110,
-                    height: 103,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 0,
-                              color: Colors.white.withOpacity(0.9),
-                              offset: Offset(-0, -0))
-                        ]),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Image(
-                          image: AssetImage("images/med.png"),
-                          color: Colors.purple,
-                          height: 30,
-                          width: 27,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("Medicine",
-                            style: TextStyle(
-                                color: Colors.purple,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 110,
-                    height: 103,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Image(
-                          image: AssetImage("images/doct.png"),
-                          color: Colors.purple,
-                          height: 30,
-                          width: 27,
-                          fit: BoxFit.cover,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("Doctor",
-                            style: TextStyle(
-                                color: Colors.purple,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 110,
-                    height: 103,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 0,
-                              color: Colors.white.withOpacity(0.9),
-                              offset: Offset(-0, -0))
-                        ]),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Image(
-                          image: AssetImage("images/hosp.png"),
-                          color: Colors.purple,
-                          height: 30,
-                          width: 27,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("Hospital",
-                            style: TextStyle(
-                                color: Colors.purple,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 110,
-                    height: 103,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 0,
-                              color: Colors.white.withOpacity(0.9),
-                              offset: Offset(-0, -0))
-                        ]),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Image(
-                          image: AssetImage("images/med.png"),
-                          color: Colors.purple,
-                          height: 30,
-                          width: 27,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("Medicine",
-                            style: TextStyle(
-                                color: Colors.purple,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 110,
-                    height: 103,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Image(
-                          image: AssetImage("images/doct.png"),
-                          color: Colors.purple,
-                          height: 30,
-                          width: 27,
-                          fit: BoxFit.cover,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("Doctor",
-                            style: TextStyle(
-                                color: Colors.purple,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 110,
-                    height: 103,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 0,
-                              color: Colors.white.withOpacity(0.9),
-                              offset: Offset(-0, -0))
-                        ]),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Image(
-                          image: AssetImage("images/hosp.png"),
-                          color: Colors.purple,
-                          height: 30,
-                          width: 27,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("Hospital",
-                            style: TextStyle(
-                                color: Colors.purple,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 110,
-                    height: 103,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 0,
-                              color: Colors.white.withOpacity(0.9),
-                              offset: Offset(-0, -0))
-                        ]),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Image(
-                          image: AssetImage("images/med.png"),
-                          color: Colors.purple,
-                          height: 30,
-                          width: 27,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text("Medicine",
-                            style: TextStyle(
-                                color: Colors.purple,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            )
+                      );
+                    })),
           ],
         ),
       ),

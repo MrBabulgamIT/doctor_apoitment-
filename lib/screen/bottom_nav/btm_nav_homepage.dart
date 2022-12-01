@@ -16,10 +16,18 @@ class BottomNav_HomePage extends StatefulWidget {
 }
 
 class _BottomNav_HomePageState extends State<BottomNav_HomePage> {
+  bool _isselected = false;
+  bool _isselected1 = false;
+  bool _isselected2 = false;
+  bool _isselected4 = false;
+  bool _isselected5 = false;
+  bool _isselected6 = false;
+
   @override
   Widget build(BuildContext context) {
     final width = Get.width;
     final height = Get.height;
+
     return Scaffold(
         backgroundColor: Colors.purple.withOpacity(0.1),
         appBar: AppBar(
@@ -242,120 +250,141 @@ class _BottomNav_HomePageState extends State<BottomNav_HomePage> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      Container(
-                        height: 145,
-                        width: 125,
-                        decoration: BoxDecoration(
-                            color: Colors.purple,
-                            borderRadius: BorderRadius.circular(15)),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Column(
-                            children: [
-                              Image(
-                                image: AssetImage("images/rea_1.png"),
-                                width: 125,
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text("General Medicine",
-                                  style: GoogleFonts.nunito(
-                                      fontSize: 12,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700)),
-                              Text("1200 Doctors",
-                                  style: GoogleFonts.nunito(
-                                      fontSize: 12,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500)),
-                            ],
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _isselected = _isselected ? false : true;
+                          });
+                        },
+                        child: Container(
+                          height: 145,
+                          width: 125,
+                          decoration: BoxDecoration(
+                              color: _isselected ? Colors.purple : Colors.white,
+                              borderRadius: BorderRadius.circular(15)),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Column(
+                              children: [
+                                Image(
+                                  image: AssetImage("images/rea_1.png"),
+                                  width: 125,
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("General Medicine",
+                                    style: GoogleFonts.nunito(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w700)),
+                                Text("1200 Doctors",
+                                    style: GoogleFonts.nunito(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w500)),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                       SizedBox(
                         width: 10,
                       ),
-                      Container(
-                        height: 145,
-                        width: 125,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  blurRadius: 95,
-                                  offset: Offset(40, 40))
-                            ],
-                            borderRadius: BorderRadius.circular(15)),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Column(
-                            children: [
-                              Image(
-                                image: AssetImage("images/rea_2.png"),
-                                width: 125,
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text("Internal Medicine",
-                                  style: GoogleFonts.nunito(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w700)),
-                              Text("800 Doctors",
-                                  style: GoogleFonts.nunito(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500)),
-                            ],
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _isselected = _isselected ? false : true;
+                          });
+                        },
+                        child: Container(
+                          height: 145,
+                          width: 125,
+                          decoration: BoxDecoration(
+                              color: _isselected ? Colors.purple : Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black.withOpacity(0.3),
+                                    blurRadius: 95,
+                                    offset: Offset(40, 40))
+                              ],
+                              borderRadius: BorderRadius.circular(15)),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Column(
+                              children: [
+                                Image(
+                                  image: AssetImage("images/rea_2.png"),
+                                  width: 125,
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("Internal Medicine",
+                                    style: GoogleFonts.nunito(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w700)),
+                                Text("800 Doctors",
+                                    style: GoogleFonts.nunito(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w500)),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                       SizedBox(
                         width: 10,
                       ),
-                      Container(
-                        height: 145,
-                        width: 125,
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  blurRadius: 95,
-                                  offset: Offset(40, 40))
-                            ],
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15)),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Column(
-                            children: [
-                              Image(
-                                image: AssetImage("images/rea_3.png"),
-                                width: 125,
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text("Internal Medicine",
-                                  style: GoogleFonts.nunito(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w700)),
-                              Text("650 Doctors",
-                                  style: GoogleFonts.nunito(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500)),
-                            ],
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _isselected = _isselected ? false : true;
+                          });
+                        },
+                        child: Container(
+                          height: 145,
+                          width: 125,
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black.withOpacity(0.3),
+                                    blurRadius: 95,
+                                    offset: Offset(40, 40))
+                              ],
+                              color: _isselected ? Colors.purple : Colors.white,
+                              borderRadius: BorderRadius.circular(15)),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Column(
+                              children: [
+                                Image(
+                                  image: AssetImage("images/rea_3.png"),
+                                  width: 125,
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("Internal Medicine",
+                                    style: GoogleFonts.nunito(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w700)),
+                                Text("650 Doctors",
+                                    style: GoogleFonts.nunito(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w500)),
+                              ],
+                            ),
                           ),
                         ),
                       ),

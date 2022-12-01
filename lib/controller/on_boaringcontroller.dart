@@ -8,12 +8,12 @@ class OnBardingController extends GetxController {
   var pagecontroller = PageController();
   bool get isLastPage => selectedPageIndex.value == onboardingPages.length - 1;
 
-  // forwardAction() {
-  //   if (isLastPage) {
-  //     Get.to(HomePage());
-  //   } else
-  //     pagecontroller.nextPage(duration: 300.milliseconds, curve: Curves.ease);
-  // }
+  forwardAction() {
+    if (isLastPage) {
+      Get.to(LoginPage());
+    } else
+      pagecontroller.nextPage(duration: 300.milliseconds, curve: Curves.ease);
+  }
 
   List<OnBoardingModel> onboardingPages = [
     OnBoardingModel("images/on_b_1.jpg", "Find your doctor",
