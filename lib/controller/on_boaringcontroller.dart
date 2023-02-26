@@ -16,11 +16,11 @@ class OnBardingController extends GetxController {
   }
 
   List<OnBoardingModel> onboardingPages = [
-    OnBoardingModel("images/on_b_1.jpg", "Find your doctor",
+    OnBoardingModel("images/on_b_1.jpg", "Find your doctor's",
+        '"At vero eos et accusamus et iussto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident"'),
+    OnBoardingModel("images/on_b_2.jpg", "Find your doctor's",
         '"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident"'),
-    OnBoardingModel("images/on_b_2.jpg", "Find your doctor",
-        '"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident"'),
-    OnBoardingModel("images/on_b_3.jpg", "Find your doctor",
+    OnBoardingModel("images/on_b_3.jpg", "Find your doctor's",
         ' "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident"'),
   ];
 }

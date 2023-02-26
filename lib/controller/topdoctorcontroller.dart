@@ -6,16 +6,16 @@ class TopDoctorController {
         designation: "Dr. Ishtiuq Ahmed Chowdhury",
         location: "General Practitioner",
         name: "Somerian Clinic - Dubai",
-        time: "10:00  AM-  8.45 PM"),
+        time: "10:00  AM-  9.00 PM"),
     TopDoctorModel(
         designation: "Dr. Ishtiuq Ahmed Chowdhury",
         location: "General Practitioner",
         name: "Somerian Clinic - Dubai",
-        time: "10:00  AM-  8.45 PM"),
+        time: "10:00  AM-  9.00 PM"),
     TopDoctorModel(
         designation: "Dr. Ishtiuq Ahmed Chowdhury",
         location: "General Practitioner",
         name: "Somerian Clinic - Dubai",
-        time: "10:00  AM-  8.45 PM"),
+        time: "10:00  AM-  9.00 PM"),
   ];
 }

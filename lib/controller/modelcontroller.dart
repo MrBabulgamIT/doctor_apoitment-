@@ -9,7 +9,7 @@ class ModelController {
     ModelData(
         image: "images/doc_cat_2.png",
         titleName: "Internal Medicine",
-        subTitle: "800 Doctors"),
+        subTitle: "850 Doctors"),
     ModelData(
         image: "images/doc_cat_3.png",
         titleName: "Gynecology",
