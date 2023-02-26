@@ -28,7 +28,7 @@ class OnBoardingMain extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(
-                    top: 55,
+                    top: 54,
                     left: 30,
                     right: 30,
                   ),

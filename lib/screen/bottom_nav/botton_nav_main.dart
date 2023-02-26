@@ -120,7 +120,7 @@ class _BottomNav_MainPageState extends State<BottomNav_MainPage> {
         shape: CircularNotchedRectangle(),
         notchMargin: 18,
         child: Container(
-          height: 60,
+          height: 58,
           decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(

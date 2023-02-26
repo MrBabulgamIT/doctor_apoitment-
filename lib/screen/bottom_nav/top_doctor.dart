@@ -14,7 +14,19 @@ class Top_DoctorPage extends StatefulWidget {
 }
 
 class _Top_DoctorPageState extends State<Top_DoctorPage> {
+  int listItem = TopDoctorController().topdoctormodeldata.length;
+  List<bool> selectionStatus = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    selectionStatus = List.generate(listItem, (index) => false);
+
+    super.initState();
+  }
+
   final topdoctordata = TopDoctorController();
+
   @override
   Widget build(BuildContext context) {
     final width = Get.width;
@@ -188,7 +200,19 @@ class _Top_DoctorPageState extends State<Top_DoctorPage> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-                            Get.to(DoctorInformation());
+                            setState(() {
+                              for (int i = 0; i < listItem; i++) {
+                                if (i == index) {
+                                  selectionStatus[i] == true
+                                      ? selectionStatus[i] = false
+                                      : selectionStatus[i] = true;
+                                } else {
+                                  selectionStatus[i] = false;
+                                }
+                              }
+                            });
+                            print(
+                                'index $index value = ${selectionStatus[index]}');
                           },
                           child: Column(
                             children: [
@@ -196,7 +220,9 @@ class _Top_DoctorPageState extends State<Top_DoctorPage> {
                                 width: width,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
-                                  color: Colors.white.withOpacity(0.9),
+                                  color: selectionStatus[index]
+                                      ? Colors.purple
+                                      : Colors.white.withOpacity(0.9),
                                   boxShadow: [
                                     BoxShadow(
                                         color: Colors.black.withOpacity(0.3),
@@ -212,11 +238,11 @@ class _Top_DoctorPageState extends State<Top_DoctorPage> {
                                         ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(30),
-                                          child: Image(
+                                          child: const Image(
                                               image: AssetImage(
                                                   "images/pdoc.png")),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         Column(
@@ -234,9 +260,12 @@ class _Top_DoctorPageState extends State<Top_DoctorPage> {
                                                   .name
                                                   .toString(),
                                               style: GoogleFonts.nunito(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.black),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w700,
+                                                color: selectionStatus[index]
+                                                    ? Colors.white
+                                                    : Colors.black,
+                                              ),
                                             ),
                                             SizedBox(
                                               height: 3,
@@ -248,6 +277,9 @@ class _Top_DoctorPageState extends State<Top_DoctorPage> {
                                                   .toString(),
                                               style: GoogleFonts.nunito(
                                                 fontSize: 12,
+                                                color: selectionStatus[index]
+                                                    ? Colors.white
+                                                    : Colors.black,
                                                 fontWeight: FontWeight.w400,
                                               ),
                                             ),
@@ -261,6 +293,9 @@ class _Top_DoctorPageState extends State<Top_DoctorPage> {
                                                   .toString(),
                                               style: GoogleFonts.nunito(
                                                 fontSize: 10,
+                                                color: selectionStatus[index]
+                                                    ? Colors.white
+                                                    : Colors.black,
                                                 fontWeight: FontWeight.w400,
                                               ),
                                             ),
@@ -271,7 +306,9 @@ class _Top_DoctorPageState extends State<Top_DoctorPage> {
                                               children: [
                                                 Icon(
                                                   Icons.alarm,
-                                                  color: Colors.black,
+                                                  color: selectionStatus[index]
+                                                      ? Colors.white
+                                                      : Colors.black,
                                                   size: 15,
                                                 ),
                                                 SizedBox(
@@ -284,6 +321,10 @@ class _Top_DoctorPageState extends State<Top_DoctorPage> {
                                                       .toString(),
                                                   style: GoogleFonts.nunito(
                                                     fontSize: 12,
+                                                    color:
+                                                        selectionStatus[index]
+                                                            ? Colors.white
+                                                            : Colors.black,
                                                     fontWeight: FontWeight.w400,
                                                   ),
                                                 ),
@@ -296,8 +337,13 @@ class _Top_DoctorPageState extends State<Top_DoctorPage> {
                                         height: 10,
                                       ),
                                       Container(
-                                        decoration:
-                                            BoxDecoration(color: Colors.white),
+                                        decoration: BoxDecoration(
+                                          color: selectionStatus[index]
+                                              ? Color.fromARGB(
+                                                      255, 230, 221, 232)
+                                                  .withOpacity(0.1)
+                                              : Colors.white,
+                                        ),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -340,7 +386,10 @@ class _Top_DoctorPageState extends State<Top_DoctorPage> {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10),
-                                                    color: Colors.purple,
+                                                    color:
+                                                        selectionStatus[index]
+                                                            ? Colors.white
+                                                            : Colors.purple,
                                                     boxShadow: [
                                                       BoxShadow(
                                                           blurRadius: 0,
@@ -357,10 +406,11 @@ class _Top_DoctorPageState extends State<Top_DoctorPage> {
                                                     child: Text(
                                                       "Book Appointment",
                                                       style: GoogleFonts.nunito(
-                                                          fontSize: 10,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: Colors.white),
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),

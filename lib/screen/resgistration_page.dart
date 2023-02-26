@@ -29,7 +29,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 height: 42,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 6),
                 child: GestureDetector(
                   onTap: () {
                     Get.back();

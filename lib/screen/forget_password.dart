@@ -19,7 +19,7 @@ class _Forget_PasswordState extends State<Forget_Password> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 25),
           child: Column(
             children: [
               SizedBox(

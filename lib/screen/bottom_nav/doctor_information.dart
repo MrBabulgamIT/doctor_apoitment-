@@ -34,7 +34,7 @@ class _DoctorInformationState extends State<DoctorInformation> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsets.symmetric(vertical: 50, horizontal: 6),
+                        const EdgeInsets.symmetric(vertical: 50, horizontal: 5),
                     child: Column(
                       children: [
                         Row(

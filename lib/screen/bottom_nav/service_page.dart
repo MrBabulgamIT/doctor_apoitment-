@@ -13,6 +13,17 @@ class ServicePage extends StatefulWidget {
 }
 
 class _ServicePageState extends State<ServicePage> {
+  int listItem = ServiceController().ServiceModelData.length;
+  List<bool> selectionStatus = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    selectionStatus = List.generate(listItem, (index) => false);
+
+    super.initState();
+  }
+
   final serviceData = ServiceController();
   @override
   Widget build(BuildContext context) {
@@ -79,40 +90,63 @@ class _ServicePageState extends State<ServicePage> {
                             mainAxisSpacing: 8.0),
                     itemCount: serviceData.ServiceModelData.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                        width: 110,
-                        height: 103,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 0,
-                                  color: Colors.white.withOpacity(0.9),
-                                  offset: Offset(-0, -0))
-                            ]),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image(
-                              image: AssetImage(serviceData
-                                  .ServiceModelData[index].icon
-                                  .toString()),
-                              color: Colors.purple,
-                              height: 30,
-                              width: 27,
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                                serviceData.ServiceModelData[index].name
-                                    .toString(),
-                                style: TextStyle(
-                                    color: Colors.purple,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700)),
-                          ],
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            for (int i = 0; i < listItem; i++) {
+                              if (i == index) {
+                                selectionStatus[i] == true
+                                    ? selectionStatus[i] = false
+                                    : selectionStatus[i] = true;
+                              } else {
+                                selectionStatus[i] = false;
+                              }
+                            }
+                          });
+                          print(
+                              'index $index value = ${selectionStatus[index]}');
+                        },
+                        child: Container(
+                          width: 110,
+                          height: 103,
+                          decoration: BoxDecoration(
+                              color: selectionStatus[index]
+                                  ? Colors.purple
+                                  : Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 0,
+                                    color: Colors.white.withOpacity(0.9),
+                                    offset: Offset(-0, -0))
+                              ]),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image(
+                                image: AssetImage(serviceData
+                                    .ServiceModelData[index].icon
+                                    .toString()),
+                                color: selectionStatus[index]
+                                    ? Colors.white
+                                    : Colors.purple,
+                                height: 30,
+                                width: 27,
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                  serviceData.ServiceModelData[index].name
+                                      .toString(),
+                                  style: TextStyle(
+                                      color: selectionStatus[index]
+                                          ? Colors.white
+                                          : Colors.purple,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700)),
+                            ],
+                          ),
                         ),
                       );
                     })),

@@ -16,6 +16,17 @@ class DoctorPage extends StatefulWidget {
 class _DoctorPageState extends State<DoctorPage> {
   // Color _containerColor = _isSelected ? Colors.purple : Colors.white;
   bool _isSelected = false;
+  int listItem = ModelController().modelControolerData.length;
+  List<bool> selectionStatus = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    selectionStatus = List.generate(listItem, (index) => false);
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = Get.width;
@@ -25,7 +36,7 @@ class _DoctorPageState extends State<DoctorPage> {
 
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Container(
           color: Colors.white.withOpacity(0.9),
           child: Column(
@@ -89,13 +100,25 @@ class _DoctorPageState extends State<DoctorPage> {
                         return GestureDetector(
                           onTap: () {
                             setState(() {
-                              _isSelected = _isSelected ? false : true;
+                              for (int i = 0; i < listItem; i++) {
+                                if (i == index) {
+                                  selectionStatus[i] == true
+                                      ? selectionStatus[i] = false
+                                      : selectionStatus[i] = true;
+                                } else {
+                                  selectionStatus[i] = false;
+                                }
+                              }
                             });
+                            print(
+                                'index $index value = ${selectionStatus[index]}');
                           },
                           child: Container(
                             height: 130,
                             decoration: BoxDecoration(
-                              color: _isSelected ? Colors.purple : Colors.white,
+                              color: selectionStatus[index]
+                                  ? Colors.purple
+                                  : Colors.white,
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: Column(
